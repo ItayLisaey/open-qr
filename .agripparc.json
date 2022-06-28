@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json.schemastore.org/agripparc-1.4.json",
+  "styling": "css",
+  "stylingModule": true,
+  "baseDir": "./app/components"
+}
