@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 5%;
+    a {
+        color: rgb(63, 63, 63);
+        display: flex;
+        height: 25%;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        background-color: lightgrey;
+        aspect-ratio: 1;
+        font-size: 3rem;
+        border-radius: 6%;
+        transition: all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+        &:hover {
+            background-color: rgb(63, 63, 63);
+            color: lightgrey;
+        }
+    }
+
+}
