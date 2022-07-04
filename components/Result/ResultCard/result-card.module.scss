@@ -25,3 +25,16 @@
     // color: lightgrey;
   }
 }
+
+.default {
+  display: flex;
+  justify-content: space-between;
+  padding: {
+    block: 1rem;
+  }
+
+  span:first-child {
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}

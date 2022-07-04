@@ -33,14 +33,14 @@ export const CameraScan: React.VFC<CameraScanProps> = ({ onBack }) => {
         videoContainerStyle={{
           paddingTop: '0',
           width: '100%',
-          height: '100vh',
+          height: '100%',
         }}
         videoStyle={{
           display: 'flex',
           overflow: 'auto',
           position: 'auto',
           width: '100%',
-          height: '100vh',
+          height: '100%',
         }}
         constraints={{
           facingMode: facingMode,
