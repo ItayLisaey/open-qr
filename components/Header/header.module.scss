@@ -1,0 +1,12 @@
+@use "../../styles/theme/theme" as *;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $light;
+  padding: 1rem;
+  svg {
+    height: 3vh;
+  }
+}

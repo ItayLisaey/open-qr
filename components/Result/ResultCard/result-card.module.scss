@@ -1,0 +1,27 @@
+@use "../../../styles/theme/theme" as *;
+
+.container {
+  background-color: lightgrey;
+  border-radius: 0.2rem;
+  padding: 1rem;
+
+  & > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // max-height: 5vh;
+    padding: {
+      block: 1rem;
+    }
+
+    svg {
+      max-height: 4vh;
+    }
+  }
+
+  button {
+    @include text-button($dark, $light);
+    // background-color: $dark;
+    // color: lightgrey;
+  }
+}

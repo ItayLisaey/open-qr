@@ -11,8 +11,10 @@ type EventObject = {
   value: string;
 };
 
+
+
 export const machine = createMachine<ContextObject, EventObject>({
-  id: 'QR SCAN',
+  id: 'qr-scan',
   initial: 'idle',
   schema: {
     context: {} as ContextObject,
@@ -23,6 +25,7 @@ export const machine = createMachine<ContextObject, EventObject>({
   },
   states: {
     idle: {
+      entry: 'clear',
       on: {
         'SELECT-CAMERA': {
           target: 'camera',
@@ -42,13 +45,6 @@ export const machine = createMachine<ContextObject, EventObject>({
         },
       },
     },
-    results: {
-      on: {
-        BACK: {
-          target: 'idle',
-        },
-      },
-    },
     file: {
       on: {
         SUCCESS: {
@@ -60,7 +56,19 @@ export const machine = createMachine<ContextObject, EventObject>({
         },
       },
     },
+
+    results: {
+      on: {
+        BACK: {
+          target: 'idle',
+        },
+      },
+    },
   },
+}, {
+  actions: {
+    clear: assign({ result: (context, event) => undefined }),
+  }
 });
 
 export const useHomeMachine = () => useMachine(machine);

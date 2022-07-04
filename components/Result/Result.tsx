@@ -1,14 +1,21 @@
 import React from 'react';
+import classes from './result.module.scss';
+import { ResultCard } from './ResultCard';
 
 export interface ResultProps {
   onBack: VoidFunction;
+  data?: string;
 }
 
-export const Result: React.VFC<ResultProps> = ({ onBack }) => {
+export const Result: React.VFC<ResultProps> = ({ onBack, data }) => {
   return (
-    <div>
-      <h1>results</h1>
-      <button onClick={onBack}>back</button>
-    </div>
+    <section className={classes.container}>
+      <main>
+        <ResultCard data={data} />
+      </main>
+      <footer>
+        <button onClick={onBack}>back</button>
+      </footer>
+    </section>
   );
 };

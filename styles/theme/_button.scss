@@ -1,0 +1,47 @@
+@use "./colors" as *;
+
+@mixin base-button($back: $light, $fore: $dark) {
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+  color: $fore;
+  background-color: $back;
+  &:hover {
+    background-color: darken($back, 10);
+    color: $fore;
+  }
+
+  &:active {
+    background-color: darken($back, 20);
+    color: $back;
+  }
+}
+
+@mixin icon-button($back: $dark) {
+  @include base-button();
+  color: $back;
+  display: flex;
+  height: 25%;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: lightgrey;
+  aspect-ratio: 1;
+  font-size: 3rem;
+  border-radius: 6%;
+  transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+  & > svg {
+    max-height: 5rem;
+  }
+
+  &:hover {
+    background-color: darken($back, 10);
+    color: lightgrey;
+  }
+}
+
+@mixin text-button($back: $light, $fore: $dark) {
+  @include base-button($back, $fore);
+}
