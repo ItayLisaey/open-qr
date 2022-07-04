@@ -16,6 +16,7 @@ export const Home: React.FC<HomeProps> = () => {
 
   return (
     <main className={styles.container}>
+      <pre>{JSON.stringify(state.context, null, 2)}</pre>
       {state.matches('idle') && (
         <Idle
           onSelectCamera={() => send('SELECT-CAMERA')}
@@ -23,8 +24,10 @@ export const Home: React.FC<HomeProps> = () => {
         />
       )}
       {state.matches('camera') && <CameraScan />}
-      {state.matches('file') && <FileScan />}
-      {state.matches('results') && <Result />}
+      {state.matches('file') && (
+        <FileScan setResult={(result) => send('SUCCESS', { value: result })} />
+      )}
+      {state.matches('results') && <Result onBack={() => send('BACK')} />}
     </main>
   );
 };

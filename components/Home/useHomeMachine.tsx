@@ -1,9 +1,26 @@
 import { useMachine } from '@xstate/react';
-import { createMachine } from 'xstate';
+import { assign, createMachine } from 'xstate';
 
-export const machine = createMachine({
+type ContextObject = {
+  result?: string;
+  error?: string;
+};
+
+type EventObject = {
+  type: string;
+  value: string;
+};
+
+export const machine = createMachine<ContextObject, EventObject>({
   id: 'QR SCAN',
   initial: 'idle',
+  schema: {
+    context: {} as ContextObject,
+  },
+  context: {
+    result: undefined,
+    error: undefined,
+  },
   states: {
     idle: {
       on: {
@@ -35,6 +52,7 @@ export const machine = createMachine({
     file: {
       on: {
         SUCCESS: {
+          actions: assign({ result: (context, event) => event.value }),
           target: 'results',
         },
         CANCEL: {
