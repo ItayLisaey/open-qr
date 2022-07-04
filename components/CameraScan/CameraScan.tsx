@@ -1,9 +1,16 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faRepeat, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { OnResultFunction, QrReader } from 'react-qr-reader';
+import classes from './camera-scan.module.scss';
 
-export interface CameraScanProps {}
 
-export const CameraScan: React.VFC<CameraScanProps> = () => {
+export interface CameraScanProps {
+  onBack: VoidFunction;
+}
+
+export const CameraScan: React.VFC<CameraScanProps> = ({ onBack }) => {
   const [facingMode, setFacingMode] = useState<'environment' | 'user'>(
     'environment'
   );
@@ -19,28 +26,31 @@ export const CameraScan: React.VFC<CameraScanProps> = () => {
   };
 
   return (
-    <div className='camera-container'>
+    <div className={classes.container}>
       <QrReader
         className='camera-section'
         onResult={handleResult}
         videoContainerStyle={{
           paddingTop: '0',
           width: '100%',
-          height: '100vh',
+          height: '100%',
         }}
         videoStyle={{
           display: 'flex',
           overflow: 'auto',
           position: 'auto',
           width: '100%',
-          height: '100vh',
+          height: '100%',
         }}
         constraints={{
           facingMode: facingMode,
         }}
       />
-      <button className='camera-flip' onClick={handleFlip}>
-        flip
+      <button role="flip-camera" onClick={handleFlip}>
+        <FontAwesomeIcon icon={faRepeat as IconProp} />
+      </button>
+      <button role="back" onClick={onBack}>
+        <FontAwesomeIcon icon={faTimes as IconProp} />
       </button>
     </div>
   );
