@@ -16,6 +16,7 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "@xstate/react": "^3.0.0",
     "classnames": "^2.3.1",
+    "framer-motion": "^6.5.1",
     "next": "12.2.0",
     "next-pwa": "^5.5.4",
     "qr-scanner": "^1.4.1",
