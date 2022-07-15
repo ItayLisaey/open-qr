@@ -1,7 +1,12 @@
 @use "../../styles/theme/theme" as *;
 
 .container {
-  background-color: $dark;
+  background-color: darken($dark, 30);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   & > button[role="flip-camera"] {
     @include icon-button();
@@ -26,8 +31,19 @@
     bottom: 3%;
     left: 50%;
     transform: translateX(-50%);
-    height: 5%;
+    height: 2.2rem;
+    width: 2.2rem;
     border-radius: 50%;
-    padding: 1rem;
+
+    svg {
+      min-width: .75rem;
+    }
+  }
+}
+
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 35%;
   }
 }

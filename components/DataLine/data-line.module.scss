@@ -1,0 +1,17 @@
+@use "../../styles/theme/theme" as *;
+
+.container {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: {
+      block: .5rem;
+    }
+  
+    span[role="label"] {
+      text-transform: uppercase;
+      font-weight: 900;
+      color: darken($light, 30)
+    }
+  
+  }

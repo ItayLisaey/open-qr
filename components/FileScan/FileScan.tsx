@@ -26,15 +26,13 @@ export const FileScan: React.FC<FileScanProps> = ({ setResult, onCancel }) => {
 
   return (
     <section className={classes.container}>
-      <label>
+      <label datatype='file-icon'>
         <FontAwesomeIcon icon={faUpload as IconProp} />
-
         <input hidden onChange={handleFileChange} type='file' />
       </label>
-      <button onClick={onCancel}>
+      <button onClick={onCancel} datatype='back-icon'>
         <FontAwesomeIcon icon={faTimes as IconProp} />
       </button>
-
     </section>
   );
 };

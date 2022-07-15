@@ -1,6 +1,7 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
 import classes from './result-card.module.scss';
 
 export const ResultCardHeader: React.FC<{
@@ -12,15 +13,6 @@ export const ResultCardHeader: React.FC<{
       <span>{title}</span>
       <FontAwesomeIcon icon={icon} />
     </>
-  );
-};
-
-const Default: React.FC<{ result: string }> = ({ result }) => {
-  return (
-    <div className={classes.default}>
-      <span>value</span>
-      <span>{result}</span>
-    </div>
   );
 };
 
@@ -42,14 +34,28 @@ const ActionButton: React.FC<ActionButtonProps> = ({
   );
 };
 
-const DefaultAction: React.FC<{ result: string }> = ({ result }) => {
-  return <ActionButton icon={faCopy as IconProp} text={'copy'} />;
-};
+const Copy: React.FC<{ result: string }> = ({ result }) => {
+  const [copied, setCopied] = useState(false);
 
-export const ResultDisplayElements = {
-  Default,
+  const handleCopied = () => {
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1000);
+  };
+
+  return (
+    <>
+      <ActionButton
+        icon={faCopy as IconProp}
+        text={'copy'}
+        onClick={handleCopied}
+      />
+      <span className={classes.copied} data-copied={copied}>
+        Copied!
+      </span>
+    </>
+  );
 };
 
 export const ResultDisplayActions = {
-  DefaultAction,
+  Copy,
 };

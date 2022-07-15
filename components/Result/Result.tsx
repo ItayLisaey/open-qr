@@ -7,7 +7,7 @@ export interface ResultProps {
   data?: string;
 }
 
-export const Result: React.VFC<ResultProps> = ({ onBack, data }) => {
+export const Result: React.FC<ResultProps> = ({ onBack, data }) => {
   return (
     <section className={classes.container}>
       <main>

@@ -8,12 +8,9 @@ import {
   faPhone,
 } from '@fortawesome/free-solid-svg-icons';
 import invariant from 'tiny-invariant';
+import { generateDataLines } from '../../DataLine';
 
-import {
-  ResultCardHeader,
-  ResultDisplayActions,
-  ResultDisplayElements,
-} from './results.components';
+import { ResultCardHeader, ResultDisplayActions } from './results.components';
 
 type ResultType = 'url' | 'email' | 'number' | 'date' | 'time' | 'phone';
 
@@ -50,57 +47,39 @@ export const assertResult = (result: string): ResultType | undefined => {
 const resultsDisplay: Record<ResultType, ResultDisplay> = {
   url: {
     header: <ResultCardHeader title={'Link'} icon={faLink as IconProp} />,
-    action: (result: string) => (
-      <ResultDisplayActions.DefaultAction result={result} />
-    ),
-    element: (result: string) => (
-      <ResultDisplayElements.Default result={result} />
-    ),
+    action: (result: string) => <ResultDisplayActions.Copy result={result} />,
+    element: (result: string) =>
+      generateDataLines({ value: { value: result } }),
   },
   date: {
     header: <ResultCardHeader title={'Date'} icon={faCalendar as IconProp} />,
-    action: (result: string) => (
-      <ResultDisplayActions.DefaultAction result={result} />
-    ),
-    element: (result: string) => (
-      <ResultDisplayElements.Default result={result} />
-    ),
+    action: (result: string) => <ResultDisplayActions.Copy result={result} />,
+    element: (result: string) =>
+      generateDataLines({ value: { value: result } }),
   },
   time: {
     header: <ResultCardHeader title={'Time'} icon={faCalendar as IconProp} />,
-    action: (result: string) => (
-      <ResultDisplayActions.DefaultAction result={result} />
-    ),
-    element: (result: string) => (
-      <ResultDisplayElements.Default result={result} />
-    ),
+    action: (result: string) => <ResultDisplayActions.Copy result={result} />,
+    element: (result: string) =>
+      generateDataLines({ value: { value: result } }),
   },
   email: {
     header: <ResultCardHeader title={'Email'} icon={faEnvelope as IconProp} />,
-    action: (result: string) => (
-      <ResultDisplayActions.DefaultAction result={result} />
-    ),
-    element: (result: string) => (
-      <ResultDisplayElements.Default result={result} />
-    ),
+    action: (result: string) => <ResultDisplayActions.Copy result={result} />,
+    element: (result: string) =>
+      generateDataLines({ value: { value: result } }),
   },
   number: {
     header: <ResultCardHeader title={'Number'} icon={faHashtag as IconProp} />,
-    action: (result: string) => (
-      <ResultDisplayActions.DefaultAction result={result} />
-    ),
-    element: (result: string) => (
-      <ResultDisplayElements.Default result={result} />
-    ),
+    action: (result: string) => <ResultDisplayActions.Copy result={result} />,
+    element: (result: string) =>
+      generateDataLines({ value: { value: result } }),
   },
   phone: {
     header: <ResultCardHeader title={'Phone'} icon={faPhone as IconProp} />,
-    action: (result: string) => (
-      <ResultDisplayActions.DefaultAction result={result} />
-    ),
-    element: (result: string) => (
-      <ResultDisplayElements.Default result={result} />
-    ),
+    action: (result: string) => <ResultDisplayActions.Copy result={result} />,
+    element: (result: string) =>
+      generateDataLines({ value: { value: result } }),
   },
 };
 
@@ -121,11 +100,10 @@ export const getResultObject = (
       display: {
         header: <ResultCardHeader title={'Text'} icon={faFont as IconProp} />,
         action: (result: string) => (
-          <ResultDisplayActions.DefaultAction result={result} />
+          <ResultDisplayActions.Copy result={result} />
         ),
-        element: (result: string) => (
-          <ResultDisplayElements.Default result={result} />
-        ),
+        element: (result: string) =>
+          generateDataLines({ value: { value: result } }),
       },
       value: result ?? '',
     };
