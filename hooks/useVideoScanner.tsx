@@ -3,13 +3,24 @@ import { MutableRefObject, useEffect } from 'react';
 
 export const useVideoScanner = (
   ref: MutableRefObject<HTMLVideoElement | null>,
-  handler: (result: string) => void
+  onDecode: (result: string) => void,
+  onDecodeError?: ((error: string | Error) => void) | undefined,
+  calculateScanRegion?:
+    | ((video: HTMLVideoElement) => QrScanner.ScanRegion)
+    | undefined,
+  preferredCamera?: string | undefined
 ) => {
   useEffect(() => {
     if (ref.current) {
-      const scanner = new QrScanner(ref.current, handler);
+      const scanner = new QrScanner(
+        ref.current,
+        onDecode,
+        onDecodeError,
+        calculateScanRegion,
+        preferredCamera
+      );
       scanner.start();
       return () => scanner.destroy();
     }
-  }, [handler, ref]);
+  }, [calculateScanRegion, onDecode, onDecodeError, preferredCamera, ref]);
 };
