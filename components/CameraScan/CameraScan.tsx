@@ -1,5 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faRepeat, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import QrScanner from 'qr-scanner';
 import { useRef, useState } from 'react';
@@ -45,9 +45,6 @@ export const CameraScan: React.FC<CameraScanProps> = ({
       <h1>Searching...</h1>
       <video ref={videoRef} />
       <section role='button-container'>
-        <button role='flip-camera' onClick={handleFlip}>
-          <FontAwesomeIcon icon={faRepeat as IconProp} />
-        </button>
         <button role='back' onClick={onBack}>
           <FontAwesomeIcon icon={faTimes as IconProp} />
         </button>
