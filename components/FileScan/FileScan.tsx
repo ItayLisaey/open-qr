@@ -14,7 +14,9 @@ export const FileScan: React.FC<FileScanProps> = ({ setResult, onCancel }) => {
     if (files) {
       const file = files[0];
       try {
-        const result = await QrScanner.scanImage(file);
+        const result = await QrScanner.scanImage(file, {
+          returnDetailedScanResult: true,
+        });
         setResult(result);
       } catch (e) {
         console.log(e);
