@@ -20,7 +20,10 @@ const DataLine: React.FC<DataLineProps> = ({
   labelProps,
   valueProps,
 }) => (
-  <figure className={classes.container}>
+  <figure
+    className={classes.container}
+    datatype={value.length > 15 ? 'longie' : 'shortie'}
+  >
     <span role='label' {...labelProps}>
       {label}
     </span>

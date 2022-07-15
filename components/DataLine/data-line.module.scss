@@ -15,5 +15,16 @@
       font-weight: 900;
       color: darken($light, 30)
     }
-  
+    
+    &[datatype='longie'] {
+      flex-direction: column;
+      background-color: $light;
+      border-radius: .2rem;
+      padding: 1rem;
+
+      span[role="value"] {
+        word-break: break-all;
+      }
+    }
+
   }
