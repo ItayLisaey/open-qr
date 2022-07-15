@@ -10,23 +10,3 @@
   gap: 5%;
 }
 
-.idle {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5%;
-
-  button {
-    @include icon-button();
-
-    height: 10rem;
-    width: 10rem;
-
-    svg {
-      height: 50%;
-      width: 50%;
-    }
-  }
-}

@@ -25,6 +25,7 @@ export const machine = createMachine<ContextObject, EventObject>(
     states: {
       idle: {
         entry: 'clear',
+        exit: 'clearError',
         on: {
           'SELECT-CAMERA': {
             target: 'camera',
@@ -40,6 +41,10 @@ export const machine = createMachine<ContextObject, EventObject>(
             actions: assign({ result: (context, event) => event.value }),
             target: 'results',
           },
+          ERROR: {
+            actions: assign({ error: (context, event) => event.value }),
+            target: 'idle',
+          },
           CANCEL: {
             target: 'idle',
           },
@@ -50,6 +55,10 @@ export const machine = createMachine<ContextObject, EventObject>(
           SUCCESS: {
             actions: assign({ result: (context, event) => event.value }),
             target: 'results',
+          },
+          ERROR: {
+            actions: assign({ error: (context, event) => event.value }),
+            target: 'idle',
           },
           CANCEL: {
             target: 'idle',
@@ -68,9 +77,14 @@ export const machine = createMachine<ContextObject, EventObject>(
   },
   {
     actions: {
-      clear: assign({ result: (context, event) => undefined }),
+      clear: assign({
+        result: (context, event) => undefined,
+      }),
+      clearError: assign({
+        error: (context, event) => undefined,
+      }),
     },
   }
 );
 
-export const useHomeMachine = () => useMachine(machine);
+export const useHomeMachine = () => useMachine<typeof machine>(machine);
