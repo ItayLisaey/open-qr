@@ -11,64 +11,66 @@ type EventObject = {
   value: string;
 };
 
+export const machine = createMachine<ContextObject, EventObject>(
+  {
+    id: 'qr-scan',
+    initial: 'idle',
+    schema: {
+      context: {} as ContextObject,
+    },
+    context: {
+      result: undefined,
+      error: undefined,
+    },
+    states: {
+      idle: {
+        entry: 'clear',
+        on: {
+          'SELECT-CAMERA': {
+            target: 'camera',
+          },
+          'SELECT-FILE': {
+            target: 'file',
+          },
+        },
+      },
+      camera: {
+        on: {
+          SUCCESS: {
+            actions: assign({ result: (context, event) => event.value }),
+            target: 'results',
+          },
+          CANCEL: {
+            target: 'idle',
+          },
+        },
+      },
+      file: {
+        on: {
+          SUCCESS: {
+            actions: assign({ result: (context, event) => event.value }),
+            target: 'results',
+          },
+          CANCEL: {
+            target: 'idle',
+          },
+        },
+      },
 
-
-export const machine = createMachine<ContextObject, EventObject>({
-  id: 'qr-scan',
-  initial: 'idle',
-  schema: {
-    context: {} as ContextObject,
-  },
-  context: {
-    result: undefined,
-    error: undefined,
-  },
-  states: {
-    idle: {
-      entry: 'clear',
-      on: {
-        'SELECT-CAMERA': {
-          target: 'camera',
-        },
-        'SELECT-FILE': {
-          target: 'file',
-        },
-      },
-    },
-    camera: {
-      on: {
-        SUCCESS: {
-          target: 'results',
-        },
-        CANCEL: {
-          target: 'idle',
-        },
-      },
-    },
-    file: {
-      on: {
-        SUCCESS: {
-          actions: assign({ result: (context, event) => event.value }),
-          target: 'results',
-        },
-        CANCEL: {
-          target: 'idle',
-        },
-      },
-    },
-
-    results: {
-      on: {
-        BACK: {
-          target: 'idle',
+      results: {
+        on: {
+          BACK: {
+            target: 'idle',
+          },
         },
       },
     },
   },
-}, {
-  actions: {
-    clear: assign({ result: (context, event) => undefined }),
+  {
+    actions: {
+      clear: assign({ result: (context, event) => undefined }),
+    },
   }
-});
+);
 
 export const useHomeMachine = () => useMachine(machine);

@@ -24,7 +24,7 @@ export const Home: React.FC<HomeProps> = () => {
       {state.matches('camera') && (
         <CameraScan
           onBack={() => send('CANCEL')}
-          onSuccess={(result: string) => send('SUCCESS', { value: result })}
+          setResult={(result) => send('SUCCESS', { value: result })}
         />
       )}
       {state.matches('file') && (
