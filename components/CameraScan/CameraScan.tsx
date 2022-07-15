@@ -1,43 +1,36 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faRepeat, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
-import { useUserCamera } from '../../hooks/useUserCamera';
+import { useRef, useState } from 'react';
 import { useVideoScanner } from '../../hooks/useVideoScanner';
 import classes from './camera-scan.module.scss';
 
 export interface CameraScanProps {
   onBack: VoidFunction;
-  onSuccess: (result: string) => void;
+  setResult: (result: string) => void;
 }
 
-export const CameraScan: React.VFC<CameraScanProps> = ({
+export const CameraScan: React.FC<CameraScanProps> = ({
   onBack,
-  onSuccess,
+  setResult,
 }) => {
   const [facingMode, setFacingMode] = useState<'environment' | 'user'>(
     'environment'
   );
-  const handleResult = (result: string) => onSuccess(result);
+  const onDecode = (result: string) => {
+    console.log('result', result);
+    return setResult(result);
+  };
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const videoRef = useUserCamera({
-    constraints: {
-      video: {
-        width: { ideal: 1280 },
-        latency: { ideal: 0 },
-        frameRate: { ideal: 30 },
-        aspectRatio: { exact: 1 },
-        facingMode: facingMode,
-      },
-    },
-  });
-  useVideoScanner(videoRef, handleResult);
+  useVideoScanner(videoRef, onDecode, undefined, undefined, facingMode);
 
   const handleFlip = () =>
     setFacingMode((prev) => (prev === 'environment' ? 'user' : 'environment'));
 
   return (
     <div className={classes.container}>
+      <h1>Searching...</h1>
       <video ref={videoRef} />
       <button role='flip-camera' onClick={handleFlip}>
         <FontAwesomeIcon icon={faRepeat as IconProp} />

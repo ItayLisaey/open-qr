@@ -7,6 +7,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  & > h1 {
+    position: absolute;
+    top: 1rem;
+    font-size: 1.5rem;
+    color: $light;
+    animation-name: textcolor;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+
+    @keyframes textcolor {
+      0% {
+        color: $light;
+      }
+      50% {
+        color: darken($light, 20);
+      }
+      100% {
+        color: $light;
+      }
+    }
+
+    z-index: 1;
+  }
+
   & > video {
     width: 95vw;
     height: 95vh;
@@ -43,6 +68,29 @@
       min-width: .75rem;
     }
   }
+}
+
+.container > h1 {
+  position: absolute;
+  top: 1rem;
+  font-size: 1.5rem;
+  color: $light;
+  animation-name: textcolor;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  z-index: 1;
+
+  @keyframes textcolor {
+    0% {
+      color: $light;
+    }
+    100% {
+      color: darken($light, 20);
+      transform: scale(.95);
+    }
+  }
+
 }
 
 
