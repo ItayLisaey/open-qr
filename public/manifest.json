@@ -1,0 +1,26 @@
+{
+  "short_name": "QR Scanner",
+  "name": "QR Scanner",
+  "icons": [
+    {
+      "src": "/scan.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/images/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#676767",
+  "display": "fullscreen",
+  "scope": "/",
+  "theme_color": "#d3d3d3"
+}
