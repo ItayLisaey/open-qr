@@ -50,25 +50,16 @@
   align-items: center;
 
 
-  & > button[role="flip-camera"] {
-    @include icon-button();
-    height: 5rem;
-    width: 5rem;
-    border-radius: 50%;
 
-    & > svg {
-      height: 60%;
-    }
-  }
 
   & > button[role="back"] {
     @include icon-button();
-    height: 3rem;
-    width: 3rem;
+    height: 3.5rem;
+    width: 3.5rem;
     border-radius: 50%;
 
     svg {
-      width: 90%;
+      width: 60%;
     }
   }
 }
