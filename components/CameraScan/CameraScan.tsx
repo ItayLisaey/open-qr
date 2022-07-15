@@ -2,7 +2,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import QrScanner from 'qr-scanner';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useVideoScanner } from '../../hooks/useVideoScanner';
 import classes from './camera-scan.module.scss';
 
@@ -17,9 +17,6 @@ export const CameraScan: React.FC<CameraScanProps> = ({
   setResult,
   onError,
 }) => {
-  const [facingMode, setFacingMode] = useState<'environment' | 'user'>(
-    'environment'
-  );
   const onDecode = (result: string) => {
     console.log('result', result);
     return setResult(result);
@@ -35,10 +32,7 @@ export const CameraScan: React.FC<CameraScanProps> = ({
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  useVideoScanner(videoRef, onDecode, onDecodeError, undefined, facingMode);
-
-  const handleFlip = () =>
-    setFacingMode((prev) => (prev === 'environment' ? 'user' : 'environment'));
+  useVideoScanner(videoRef, onDecode, onDecodeError);
 
   return (
     <div className={classes.container}>
