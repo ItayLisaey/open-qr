@@ -1,9 +1,12 @@
 @use "../../../styles/theme/theme" as *;
 
 .container {
-  background-color: lightgrey;
+  background-color: lighten($light, 10);
   border-radius: 0.2rem;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   & > header {
     display: flex;
@@ -11,11 +14,18 @@
     align-items: center;
     // max-height: 5vh;
     padding: {
-      block: 1rem;
+      right: .5rem;
+    }
+
+    span {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: darken($dark, 10);
     }
 
     svg {
-      max-height: 4vh;
+      opacity: .35;
+      max-height: 3vh;
     }
   }
 
@@ -24,17 +34,40 @@
     // background-color: $dark;
     // color: lightgrey;
   }
+
+  button[datatype="icon-text"] {
+    @include text-button($dark, $light);
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    padding: {
+      inline: 1rem;
+    }
+
+    svg {
+      max-height: 2vh;
+    }
+  }
 }
 
-.default {
-  display: flex;
-  justify-content: space-between;
-  padding: {
-    block: 1rem;
-  }
 
-  span:first-child {
-    text-transform: uppercase;
-    font-weight: 700;
-  }
+
+
+.copied {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: transparent;
+  transition: .4s all cubic-bezier(0.075, 0.82, 0.165, 1)
+}
+
+.copied[data-copied="true"] {
+  display: block;
+  color: $dark;
 }

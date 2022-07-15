@@ -15,7 +15,15 @@
     text-transform: uppercase;
     font-weight: 700;
     padding: {
-      block: 2vh;
+      block: 1rem;
     }
+    height: 3rem;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 35%;
   }
 }

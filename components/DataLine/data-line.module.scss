@@ -1,0 +1,30 @@
+@use "../../styles/theme/theme" as *;
+
+.container {
+  overflow: hidden;
+    margin: 0;
+    display: flex;
+    gap: .5rem;
+    justify-content: space-between;
+    padding: {
+      block: .5rem;
+    }
+  
+    span[role="label"] {
+      text-transform: uppercase;
+      font-weight: 900;
+      color: darken($light, 30)
+    }
+    
+    &[datatype='longie'] {
+      flex-direction: column;
+      background-color: $light;
+      border-radius: .2rem;
+      padding: 1rem;
+
+      span[role="value"] {
+        word-break: break-all;
+      }
+    }
+
+  }

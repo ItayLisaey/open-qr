@@ -14,10 +14,26 @@
   label {
     @include icon-button();
     border-radius: 50%;
+    
+  }
+
+  *[datatype='file-icon'] {
+    width: 10rem;
+    height: 10rem;
     svg {
-      max-height: 40%;
+      width: 3.5rem;
     }
   }
+
+  *[datatype='back-icon'] {
+    width: 4rem;
+    height: 4rem;
+    svg {
+      width: 1rem;
+    }
+  }
+
+
 
   button {
     height: 10%;

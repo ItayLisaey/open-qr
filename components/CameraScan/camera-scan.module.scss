@@ -1,7 +1,41 @@
 @use "../../styles/theme/theme" as *;
 
 .container {
-  background-color: $dark;
+  background-color: darken($dark, 30);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > h1 {
+    position: absolute;
+    top: 1rem;
+    font-size: 1.5rem;
+    color: $light;
+    animation-name: textcolor;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+
+    @keyframes textcolor {
+      0% {
+        color: $light;
+      }
+      50% {
+        color: darken($light, 20);
+      }
+      100% {
+        color: $light;
+      }
+    }
+
+    z-index: 1;
+  }
+
+  & > video {
+    width: 95vw;
+    height: 95vh;
+  }
 
   & > button[role="flip-camera"] {
     @include icon-button();
@@ -26,8 +60,42 @@
     bottom: 3%;
     left: 50%;
     transform: translateX(-50%);
-    height: 5%;
+    height: 2.2rem;
+    width: 2.2rem;
     border-radius: 50%;
-    padding: 1rem;
+
+    svg {
+      min-width: .75rem;
+    }
+  }
+}
+
+.container > h1 {
+  position: absolute;
+  top: 1rem;
+  font-size: 1.5rem;
+  color: $light;
+  animation-name: textcolor;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  z-index: 1;
+
+  @keyframes textcolor {
+    0% {
+      color: $light;
+    }
+    100% {
+      color: darken($light, 20);
+      transform: scale(.95);
+    }
+  }
+
+}
+
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 35%;
   }
 }
