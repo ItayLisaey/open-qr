@@ -1,7 +1,7 @@
 @use "../../../styles/theme/theme" as *;
 
 .container {
-  background-color: lightgrey;
+  background-color: lighten($light, 10);
   border-radius: 0.2rem;
   padding: 1rem;
   display: flex;
@@ -24,7 +24,7 @@
 
     svg {
       opacity: .35;
-      max-height: 4vh;
+      max-height: 3vh;
     }
   }
 
@@ -36,7 +36,6 @@
 
   button[datatype="icon-text"] {
     @include text-button($dark, $light);
-
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -48,7 +47,7 @@
     }
 
     svg {
-      max-height: 2.5vh;
+      max-height: 2vh;
     }
   }
 }

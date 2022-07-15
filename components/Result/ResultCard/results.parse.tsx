@@ -35,13 +35,12 @@ const translator: Record<ResultType, RegExp> = {
     /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/,
 };
 
-export const assertResult = (result: string): ResultType | undefined => {
-  Object.entries(translator).forEach(([key, value]) => {
-    if (value.test(result)) {
-      return key;
+export const assertResult = (result: string) => {
+  for (const [type, regex] of Object.entries(translator)) {
+    if (regex.test(result)) {
+      return type as ResultType;
     }
-  });
-  return undefined;
+  }
 };
 
 const resultsDisplay: Record<ResultType, ResultDisplay> = {
@@ -89,6 +88,7 @@ export const getResultObject = (
   try {
     invariant(result, 'Result is undefined');
     const type = assertResult(result);
+    console.log('type', type);
     invariant(type, 'Result is not a valid type');
     const display = resultsDisplay[type];
     return {

@@ -1,8 +1,10 @@
 @use "../../styles/theme/theme" as *;
 
 .container {
+  overflow: hidden;
     margin: 0;
     display: flex;
+    gap: .5rem;
     justify-content: space-between;
     padding: {
       block: .5rem;

@@ -21,7 +21,12 @@ export const Home: React.FC<HomeProps> = () => {
           onSelectFileUpload={() => send('SELECT-FILE')}
         />
       )}
-      {state.matches('camera') && <CameraScan onBack={() => send('CANCEL')} />}
+      {state.matches('camera') && (
+        <CameraScan
+          onBack={() => send('CANCEL')}
+          onSuccess={(result: string) => send('SUCCESS', { value: result })}
+        />
+      )}
       {state.matches('file') && (
         <FileScan
           setResult={(result) => send('SUCCESS', { value: result })}

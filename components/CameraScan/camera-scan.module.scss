@@ -7,6 +7,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  & > video {
+    width: 95vw;
+    height: 95vh;
+  }
 
   & > button[role="flip-camera"] {
     @include icon-button();
