@@ -24,6 +24,24 @@
     // background-color: $dark;
     // color: lightgrey;
   }
+
+  button[datatype="icon-text"] {
+    @include text-button($dark, $light);
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    padding: {
+      inline: 1rem;
+    }
+
+    svg {
+      max-height: 2.5vh;
+    }
+  }
 }
 
 .default {
@@ -38,3 +56,5 @@
     font-weight: 700;
   }
 }
+
+

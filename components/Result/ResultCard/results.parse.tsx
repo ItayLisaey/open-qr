@@ -1,3 +1,4 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
   faCalendar,
   faEnvelope,
@@ -5,17 +6,20 @@ import {
   faHashtag,
   faLink,
   faPhone,
-  IconDefinition
-} from "@fortawesome/free-solid-svg-icons";
-import invariant from "tiny-invariant";
+} from '@fortawesome/free-solid-svg-icons';
+import invariant from 'tiny-invariant';
 
-import classes from './result-card.module.scss';
+import {
+  ResultCardHeader,
+  ResultDisplayActions,
+  ResultDisplayElements,
+} from './results.components';
 
-type ResultType = "url" | "email" | "number" | "date" | "time" | "phone";
+type ResultType = 'url' | 'email' | 'number' | 'date' | 'time' | 'phone';
 
 type ResultDisplay = {
-  title: string;
-  icon: IconDefinition;
+  header: JSX.Element;
+  action: (result: string) => JSX.Element;
   element: (result: string) => JSX.Element;
 };
 
@@ -43,48 +47,60 @@ export const assertResult = (result: string): ResultType | undefined => {
   return undefined;
 };
 
-const Default: React.FC<{ result: string }> = ({ result }) => {
-  return <div className={classes.default}>
-    <span>value</span>
-    <span>{result}</span>
-  </div>;
-};
-
 const resultsDisplay: Record<ResultType, ResultDisplay> = {
   url: {
-    title: "Link",
-    icon: faLink,
-    element: (result: string) => <Default result={result} />,
+    header: <ResultCardHeader title={'Link'} icon={faLink as IconProp} />,
+    action: (result: string) => (
+      <ResultDisplayActions.DefaultAction result={result} />
+    ),
+    element: (result: string) => (
+      <ResultDisplayElements.Default result={result} />
+    ),
   },
   date: {
-    title: "Date",
-    icon: faCalendar,
-    element: (result: string) => <Default result={result} />,
-
+    header: <ResultCardHeader title={'Date'} icon={faCalendar as IconProp} />,
+    action: (result: string) => (
+      <ResultDisplayActions.DefaultAction result={result} />
+    ),
+    element: (result: string) => (
+      <ResultDisplayElements.Default result={result} />
+    ),
   },
   time: {
-    title: "Time",
-    icon: faCalendar,
-    element: (result: string) => <Default result={result} />,
-
+    header: <ResultCardHeader title={'Time'} icon={faCalendar as IconProp} />,
+    action: (result: string) => (
+      <ResultDisplayActions.DefaultAction result={result} />
+    ),
+    element: (result: string) => (
+      <ResultDisplayElements.Default result={result} />
+    ),
   },
   email: {
-    title: "Email",
-    icon: faEnvelope,
-    element: (result: string) => <Default result={result} />,
-
+    header: <ResultCardHeader title={'Email'} icon={faEnvelope as IconProp} />,
+    action: (result: string) => (
+      <ResultDisplayActions.DefaultAction result={result} />
+    ),
+    element: (result: string) => (
+      <ResultDisplayElements.Default result={result} />
+    ),
   },
   number: {
-    title: "Number",
-    icon: faHashtag,
-    element: (result: string) => <Default result={result} />,
-
+    header: <ResultCardHeader title={'Number'} icon={faHashtag as IconProp} />,
+    action: (result: string) => (
+      <ResultDisplayActions.DefaultAction result={result} />
+    ),
+    element: (result: string) => (
+      <ResultDisplayElements.Default result={result} />
+    ),
   },
   phone: {
-    title: "Phone",
-    icon: faPhone,
-    element: (result: string) => <Default result={result} />,
-
+    header: <ResultCardHeader title={'Phone'} icon={faPhone as IconProp} />,
+    action: (result: string) => (
+      <ResultDisplayActions.DefaultAction result={result} />
+    ),
+    element: (result: string) => (
+      <ResultDisplayElements.Default result={result} />
+    ),
   },
 };
 
@@ -92,9 +108,9 @@ export const getResultObject = (
   result: string | undefined
 ): ResultObject | undefined => {
   try {
-    invariant(result, "Result is undefined");
+    invariant(result, 'Result is undefined');
     const type = assertResult(result);
-    invariant(type, "Result is not a valid type");
+    invariant(type, 'Result is not a valid type');
     const display = resultsDisplay[type];
     return {
       display,
@@ -103,12 +119,15 @@ export const getResultObject = (
   } catch {
     return {
       display: {
-        title: "Text",
-        icon: faFont,
-        element: (result: string) => <Default result={result} />,
-
+        header: <ResultCardHeader title={'Text'} icon={faFont as IconProp} />,
+        action: (result: string) => (
+          <ResultDisplayActions.DefaultAction result={result} />
+        ),
+        element: (result: string) => (
+          <ResultDisplayElements.Default result={result} />
+        ),
       },
-      value: result ?? "",
+      value: result ?? '',
     };
   }
 };
