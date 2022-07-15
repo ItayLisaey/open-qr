@@ -32,12 +32,14 @@ export const CameraScan: React.FC<CameraScanProps> = ({
     <div className={classes.container}>
       <h1>Searching...</h1>
       <video ref={videoRef} />
-      <button role='flip-camera' onClick={handleFlip}>
-        <FontAwesomeIcon icon={faRepeat as IconProp} />
-      </button>
-      <button role='back' onClick={onBack}>
-        <FontAwesomeIcon icon={faTimes as IconProp} />
-      </button>
+      <section role='button-container'>
+        <button role='flip-camera' onClick={handleFlip}>
+          <FontAwesomeIcon icon={faRepeat as IconProp} />
+        </button>
+        <button role='back' onClick={onBack}>
+          <FontAwesomeIcon icon={faTimes as IconProp} />
+        </button>
+      </section>
     </div>
   );
 };

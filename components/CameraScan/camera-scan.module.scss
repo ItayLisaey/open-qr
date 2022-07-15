@@ -37,35 +37,38 @@
     height: 95vh;
   }
 
+
+}
+
+.container > section[role="button-container"] {
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+
+
   & > button[role="flip-camera"] {
     @include icon-button();
-
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 10%;
+    height: 5rem;
+    width: 5rem;
     border-radius: 50%;
-    padding: 1rem;
 
     & > svg {
-      max-height: 60%;
+      height: 60%;
     }
   }
 
   & > button[role="back"] {
     @include icon-button();
-
-    position: absolute;
-    bottom: 3%;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 2.2rem;
-    width: 2.2rem;
+    height: 3rem;
+    width: 3rem;
     border-radius: 50%;
 
     svg {
-      min-width: .75rem;
+      width: 90%;
     }
   }
 }
