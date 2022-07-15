@@ -20,5 +20,13 @@
 
   button {
     @include icon-button();
+
+    height: 10rem;
+    width: 10rem;
+
+    svg {
+      height: 50%;
+      width: 50%;
+    }
   }
 }
