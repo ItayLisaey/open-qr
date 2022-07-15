@@ -6,9 +6,14 @@ import classes from './file-scan.module.scss';
 export interface FileScanProps {
   setResult: (result: string) => void;
   onCancel: () => void;
+  onError: (error: string) => void;
 }
 
-export const FileScan: React.FC<FileScanProps> = ({ setResult, onCancel }) => {
+export const FileScan: React.FC<FileScanProps> = ({
+  setResult,
+  onCancel,
+  onError,
+}) => {
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.currentTarget.files;
     if (files) {
@@ -18,8 +23,10 @@ export const FileScan: React.FC<FileScanProps> = ({ setResult, onCancel }) => {
         setResult(result);
       } catch (e) {
         console.log(e);
-      } finally {
-        console.log('done');
+        if (e === QrScanner.NO_QR_CODE_FOUND) {
+          return onError('No QR code found');
+        }
+        return onError('Error scanning file, please try again.');
       }
     }
   };
