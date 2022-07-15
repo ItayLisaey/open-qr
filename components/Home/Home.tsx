@@ -33,7 +33,7 @@ export const Home: React.FC<HomeProps> = () => {
         onCancel={() => send('CANCEL')}
       />
     ),
-    result: <Result onBack={() => send('BACK')} data={state.context.result} />,
+    results: <Result onBack={() => send('BACK')} data={state.context.result} />,
   };
 
   return (
