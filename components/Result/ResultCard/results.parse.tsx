@@ -46,7 +46,7 @@ export const assertResult = (result: string) => {
 const resultsDisplay: Record<ResultType, ResultDisplay> = {
   url: {
     header: <ResultCardHeader title={'Link'} icon={faLink as IconProp} />,
-    action: (result: string) => <ResultDisplayActions.Copy result={result} />,
+    action: (result: string) => <ResultDisplayActions.Link result={result} />,
     element: (result: string) =>
       generateDataLines({ value: { value: result } }),
   },
