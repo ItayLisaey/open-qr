@@ -13,7 +13,7 @@
     span[role="label"] {
       text-transform: uppercase;
       font-weight: 900;
-      color: darken($light, 30)
+      color: desaturate(darken($light, 30), 50) 
     }
     
     &[datatype='longie'] {

@@ -1,5 +1,8 @@
+@use '../styles/theme/theme'  as *;
+
 .container {
   height: 100%;
+  background-color: $neutral;
   // display: grid;
   // flex-direction: grid;
   // grid-template-rows: 1fr 15fr;

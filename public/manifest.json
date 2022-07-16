@@ -3,24 +3,24 @@
   "name": "Open QR",
   "icons": [
     {
-      "src": "/scan.svg",
+      "src": "/icon-dark-02.svg",
       "type": "image/svg+xml",
       "sizes": "512x512"
     },
     {
-      "src": "/icon-dark-01-192.png",
+      "src": "/icon-dark-02-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/icon-dark-01-512.png",
+      "src": "/icon-dark-02-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": "/",
-  "background_color": "#d3d3d3",
+  "background_color": "#f0fcf6",
   "display": "fullscreen",
   "scope": "/",
-  "theme_color": "#d3d3d3"
+  "theme_color": "#f0fcf6"
 }
