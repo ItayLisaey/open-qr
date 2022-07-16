@@ -34,10 +34,10 @@ export const Idle: React.FC<IdleProps> = ({
       </motion.button>
 
       {error && (
-        <section>
+        <motion.section {...AnimationPresets.standard}>
           <FontAwesomeIcon icon={faExclamationTriangle as IconProp} />
           <p>{error}</p>
-        </section>
+        </motion.section>
       )}
     </section>
   );

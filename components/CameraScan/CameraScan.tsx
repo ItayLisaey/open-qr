@@ -28,6 +28,7 @@ export const CameraScan: React.FC<CameraScanProps> = ({
     const err = error.toString();
 
     if (err === QrScanner.NO_QR_CODE_FOUND) return;
+    if (err === 'Scanner error: No QR code found') return;
 
     onError(error.toString());
   };

@@ -24,11 +24,10 @@ export const FileScan: React.FC<FileScanProps> = ({
         const result = await QrScanner.scanImage(file);
         setResult(result);
       } catch (e) {
-        console.log(e);
         if (e === QrScanner.NO_QR_CODE_FOUND) {
           return onError('No QR code found');
         }
-        return onError('Error scanning file, please try again.');
+        return onError('No QR code found, please try again.');
       }
     }
   };
