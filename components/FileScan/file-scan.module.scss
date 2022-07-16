@@ -20,17 +20,15 @@
   *[datatype='file-icon'] {
     width: 10rem;
     height: 10rem;
-    svg {
-      width: 3.5rem;
-    }
+    font-size: 3rem;
+    
   }
 
   *[datatype='back-icon'] {
     width: 4rem;
     height: 4rem;
-    svg {
-      width: 1rem;
-    }
+    font-size: 1.5rem;
+    will-change: transform
   }
 
 
