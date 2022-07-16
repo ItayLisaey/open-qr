@@ -4,27 +4,31 @@
 
 OpenQR is a simple, open-source, self-hosted QR code processor.
 
-## Features
+# Features
 
-### Offline capable
+## Offline capable
 
 OpenQR is available as a PWA and is fully operational with no internet connection.
 
-### Safe and secure
+## Safe and secure
 
 The QR processing happens on YOUR device and links do not open automatically.
 Also, open-source. :P
 
-### Super simple
+## Super simple
 
 Icon-based UI with almost no text.
 
-### 100% Free.
+## 100% Free.
 
 No ads whatsoever.
 
-## Technologies
+# Technologies
 
 - Built with [Next.js](https://nextjs.org/) and deployed with [Vercel](https://vercel.com).
 - Using [Nimiq's QR Scanner](https://github.com/nimiq/qr-scanner)
 - [XState](https://xstate.js.org/) and [Stately](https://stately.ai/) for state management.
+
+# License
+
+SafeView is freely distributable under the terms of the [MIT license](https://github.com/ItayLisaey/safeview/blob/main/LICENSE).
