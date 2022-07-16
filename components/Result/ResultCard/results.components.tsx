@@ -1,5 +1,8 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCopy, faLink } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowUpRightFromSquare,
+  faCopy,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import classes from './result-card.module.scss';
@@ -59,7 +62,10 @@ const Copy: React.FC<{ result: string }> = ({ result }) => {
 
 const Link: React.FC<{ result: string }> = ({ result }) => (
   <a href={result} target='_blank' rel='noreferrer'>
-    <ActionButton icon={faLink as IconProp} text={'go to'} />
+    <ActionButton
+      icon={faArrowUpRightFromSquare as IconProp}
+      text={'go to site'}
+    />
   </a>
 );
 
