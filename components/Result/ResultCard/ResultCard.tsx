@@ -15,6 +15,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({ data }) => {
     <div className={classes.container}>
       <header>{result.display.header}</header>
       <main>{result.display.element(result.value)}</main>
+
       <footer>{result.display.action(result.value)}</footer>
     </div>
   );
