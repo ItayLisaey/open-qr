@@ -1,7 +1,9 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faTimes, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion } from 'framer-motion';
 import QrScanner from 'qr-scanner';
+import { AnimationPresets } from '../../styles/animation.config';
 import classes from './file-scan.module.scss';
 export interface FileScanProps {
   setResult: (result: string) => void;
@@ -33,13 +35,17 @@ export const FileScan: React.FC<FileScanProps> = ({
 
   return (
     <section className={classes.container}>
-      <label datatype='file-icon'>
+      <motion.label datatype='file-icon' {...AnimationPresets.standard}>
         <FontAwesomeIcon icon={faUpload as IconProp} />
         <input hidden onChange={handleFileChange} type='file' />
-      </label>
-      <button onClick={onCancel} datatype='back-icon'>
+      </motion.label>
+      <motion.button
+        onClick={onCancel}
+        datatype='back-icon'
+        {...AnimationPresets.standard}
+      >
         <FontAwesomeIcon icon={faTimes as IconProp} />
-      </button>
+      </motion.button>
     </section>
   );
 };

@@ -5,7 +5,9 @@ import {
   faFileImage,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion } from 'framer-motion';
 import React from 'react';
+import { AnimationPresets } from '../../styles/animation.config';
 import classes from './idle.module.scss';
 
 interface IdleProps {
@@ -21,12 +23,16 @@ export const Idle: React.FC<IdleProps> = ({
 }) => {
   return (
     <section className={classes.container}>
-      <button onClick={onSelectCamera}>
+      <motion.button onClick={onSelectCamera} {...AnimationPresets.standard}>
         <FontAwesomeIcon icon={faCamera as IconProp} />
-      </button>
-      <button onClick={onSelectFileUpload}>
+      </motion.button>
+      <motion.button
+        onClick={onSelectFileUpload}
+        {...AnimationPresets.standard}
+      >
         <FontAwesomeIcon icon={faFileImage as IconProp} />
-      </button>
+      </motion.button>
+
       {error && (
         <section>
           <FontAwesomeIcon icon={faExclamationTriangle as IconProp} />

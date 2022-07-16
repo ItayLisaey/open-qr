@@ -1,4 +1,6 @@
+import { motion } from 'framer-motion';
 import React from 'react';
+import { AnimationPresets } from '../../styles/animation.config';
 import classes from './result.module.scss';
 import { ResultCard } from './ResultCard';
 
@@ -10,12 +12,12 @@ export interface ResultProps {
 export const Result: React.FC<ResultProps> = ({ onBack, data }) => {
   return (
     <section className={classes.container}>
-      <main>
+      <motion.main {...AnimationPresets.standard}>
         <ResultCard data={data} />
-      </main>
-      <footer>
+      </motion.main>
+      <motion.footer {...AnimationPresets.standard}>
         <button onClick={onBack}>back</button>
-      </footer>
+      </motion.footer>
     </section>
   );
 };
