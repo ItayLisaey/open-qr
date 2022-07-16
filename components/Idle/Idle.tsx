@@ -1,4 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
   faCamera,
   faExclamationTriangle,
@@ -32,6 +33,15 @@ export const Idle: React.FC<IdleProps> = ({
       >
         <FontAwesomeIcon icon={faFileImage as IconProp} />
       </motion.button>
+      <motion.a
+        href='https://github.com/ItayLisaey/open-qr'
+        target='_blank'
+        rel='noopener noreferrer'
+        {...AnimationPresets.standard}
+        transition={{ delay: 0.75 }}
+      >
+        <FontAwesomeIcon icon={faGithub as IconProp} />
+      </motion.a>
 
       {error && (
         <motion.section {...AnimationPresets.standard}>
