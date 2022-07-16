@@ -10,11 +10,13 @@
   &:hover {
     background-color: darken($back, 10);
     color: $fore;
+    transform: scale(1.02);
   }
 
   &:active {
     background-color: darken($back, 20);
-    color: $back;
+    color: $fore;
+    transform: scale(.96);
   }
 }
 
@@ -25,15 +27,23 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background-color: lightgrey;
+  background-color: $light;
   border-radius: 6%;
   transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
 
 
   &:hover {
-    background-color: darken($back, 10);
-    color: lightgrey;
+    background-color: darken($light, 10);
+    color: $dark;
+    transform: scale(1.04) !important;
+  }
+
+  &:active {
+    background-color: darken($light, 15);
+    color: lighten($dark, 5);
+    transform: scale(0.95) !important;
+    
   }
 }
 
