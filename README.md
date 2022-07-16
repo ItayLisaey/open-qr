@@ -1,3 +1,5 @@
+![OpenQR Header](https://github.com/ItayLisaey/safeview/blob/main/public/open-qr-cover-repo.png?raw=true)
+
 # Open QR
 
 Easy to use, online QR code processor.
