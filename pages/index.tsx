@@ -8,8 +8,8 @@ const HomePage: NextPage = () => {
     <div className={styles.container}>
       <Head>
         <link rel='manifest' href='manifest.json' />
-        <title>Barcode Cam</title>
-        <meta name='description' content='barcode scanner' />
+        <title>Open QR</title>
+        <meta name='description' content='QR code scanner' />
         <link rel='icon' href='/scan.svg' />
       </Head>
 

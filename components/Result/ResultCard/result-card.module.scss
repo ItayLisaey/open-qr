@@ -29,14 +29,10 @@
     }
   }
 
-  button {
-    @include text-button($dark, $light);
-    // background-color: $dark;
-    // color: lightgrey;
-  }
+
 
   button[datatype="icon-text"] {
-    @include text-button($dark, $light);
+    @include text-button($secondary, lighten($light, 10));
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;

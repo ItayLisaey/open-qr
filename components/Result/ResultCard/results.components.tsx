@@ -58,7 +58,7 @@ const Copy: React.FC<{ result: string }> = ({ result }) => {
 };
 
 const Link: React.FC<{ result: string }> = ({ result }) => (
-  <a href={result}>
+  <a href={result} target='_blank' rel='noreferrer'>
     <ActionButton icon={faLink as IconProp} text={'go to'} />
   </a>
 );

@@ -1,6 +1,6 @@
 {
-  "short_name": "QR Scanner",
-  "name": "QR Scanner",
+  "short_name": "Open QR",
+  "name": "Open QR",
   "icons": [
     {
       "src": "/scan.svg",
@@ -19,7 +19,7 @@
     }
   ],
   "start_url": "/",
-  "background_color": "#676767",
+  "background_color": "#d3d3d3",
   "display": "fullscreen",
   "scope": "/",
   "theme_color": "#d3d3d3"
