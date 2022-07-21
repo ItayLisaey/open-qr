@@ -31,4 +31,4 @@ No ads whatsoever.
 
 # License
 
-SafeView is freely distributable under the terms of the [MIT license](https://github.com/ItayLisaey/safeview/blob/main/LICENSE).
+OpenQR is freely distributable under the terms of the [MIT license](https://github.com/ItayLisaey/safeview/blob/main/LICENSE).
